@@ -12,8 +12,8 @@ const maxAge=60;
 
 function if_else(age){
   if (typeof age !== 'number') {
-    console.log( `Incorrect data type, making '${age}' type number.`)
-    Number(age)
+    console.log( `Incorrect data type`)
+    return console.log(+age)
   };
 
   if (age<minAge){
@@ -29,4 +29,4 @@ function if_else(age){
     {console.log( `Technical work`)}
 };
 
-if_else('2')
+if_else('1')
