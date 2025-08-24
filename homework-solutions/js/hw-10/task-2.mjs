@@ -8,7 +8,16 @@
 */
 
 function countOccurrences(arr) {
-  // ваш код
+  const obj={};
+  arr.map(el => {
+    if(!(el in obj)){
+      obj[el]=0
+      arr.filter(el2 =>
+      el2===el?obj[el]+=1:0)
+    }
+  })
+
+  return obj
 }
 
 export { countOccurrences };
