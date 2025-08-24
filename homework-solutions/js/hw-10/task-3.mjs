@@ -26,10 +26,8 @@ function uniqueRandomGenerator(n) {
       let num = Math.floor(getRandomArbitrary(1, n+1));
       if (!generatedNumbers.has(num)) {
         generatedNumbers.add(num);
-        return num;
-      }
-      return loop()
-    }
+        return num;}
+      return loop()}
     else {return 'All numbers were received'}
   }
 }
