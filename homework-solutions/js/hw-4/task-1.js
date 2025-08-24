@@ -10,5 +10,7 @@ if (salary>=1000){
     grade='middle'
 }
 else{
-    grade=junior
+    grade='junior'
 };
+
+console.log(grade)

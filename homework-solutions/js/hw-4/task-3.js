@@ -11,10 +11,7 @@ const maxAge=60;
 
 
 function if_else(age){
-  if (typeof age !== 'number') {
-    console.log( `Incorrect data type`)
-    return console.log(+age)
-  };
+  age=+`${age}`
 
   if (age<minAge){
     console.log( `You don't have access cause your age is ${age}. It's less then ${minAge}.`)
@@ -26,7 +23,7 @@ function if_else(age){
     console.log( `Keep calm and look Culture channel`)
   }
   else
-    {console.log( `Technical work`)}
+    {console.log( `Incorrect data type`)}
 };
 
-if_else('1')
+if_else(true)
