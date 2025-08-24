@@ -7,7 +7,7 @@ n + nn + nnn, где n не перемножаются, а конкатенир�
 
 function script(n){
     n=String(n)
-    return n + '+' + (n+n) + '+' + (n+n+n);
+    return +n + +(n+n) + +(n+n+n);
 }
 
 console.log(script(5))
