@@ -85,6 +85,13 @@ class Company {
   getEmployees(){
     return this._employees
   }
+
+  getInfo(){
+    `   
+    Компания:
+    Адрес:
+    Количество сотрудников:`
+  }
 }
 
 export { Employee, Company };
