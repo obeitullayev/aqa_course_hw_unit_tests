@@ -74,6 +74,7 @@ class Company {
     return this._address;
   }
 
+  // Сеттеры
   set title(value) {
     return this._title=value;
   }
