@@ -12,27 +12,37 @@
 */
 
 const resultUnique= [];
-let resultNull=0;
+let resultNull;
 const competitorPizzas = ['Peperoni', 'Caprichosa', 'Diablo', '4 cheeses', 'hawai']
 const myPizzasT1 = ['Peperoni', 'Margherita', 'Diablo', 'Vegetarian'];
 const myPizzasT2 = ['Peperoni', 'Caprichosa', 'Diablo', '4 cheeses', 'hawai'];
-const myPizzas =[myPizzasT1, myPizzasT2]
 const lowerCompetitors =[]
+const Unique= [];
+const UniqueT2= [];
 
 for (const _ of competitorPizzas) lowerCompetitors.push(_.toLowerCase())
 
-for (const _ of myPizzas) {
-  for (const Pizza of _){
-    const pizzaLower = Pizza.toLowerCase();
-    if (lowerCompetitors.includes(pizzaLower)){
-      resultNull++
+for (const _ of myPizzasT1) {
+    const pizzaLower = _.toLowerCase();
+    if (!lowerCompetitors.includes(pizzaLower)){
+      Unique.push(_)
       }
-    else resultUnique.push(Pizza)
-    }
-
-  if (resultNull===_.length) resultNull = null
-  else resultNull = 0
-
 }
+if (Unique.length>0)   {
+  for (const _ of Unique) resultUnique.push(_)
+}
+else resultNull = null
 
+for (const _ of myPizzasT2) {
+    const pizzaLower = _.toLowerCase();
+    if (!lowerCompetitors.includes(pizzaLower)){
+      UniqueT2.push(_)
+      }
+}
+if (UniqueT2.length>0)   {
+  for (const _ of UniqueT2) resultUnique.push(_)
+}
+else resultNull = null
+
+console.log(resultUnique, resultNull )
 export { resultNull, resultUnique };
