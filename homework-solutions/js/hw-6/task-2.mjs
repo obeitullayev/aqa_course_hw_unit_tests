@@ -44,5 +44,4 @@ if (UniqueT2.length>0)   {
 }
 else resultNull = null
 
-console.log(resultUnique, resultNull )
 export { resultNull, resultUnique };
