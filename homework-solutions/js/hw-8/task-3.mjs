@@ -7,7 +7,10 @@
 */
 
 function findMissingNumber(numbers) {
-  // Ваш код
+  const sorted = numbers.toSorted((a, b) => a-b)
+  const result = sorted.reduce((res, el) => res===el?res+1:res ,1)
+
+  return result
 }
 
 export { findMissingNumber };
