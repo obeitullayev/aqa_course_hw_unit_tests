@@ -14,23 +14,31 @@ const characters = [
 ];
 
 function addCharacter(character) {
-  // Ваш код
+  if (!character.name || !character.age) throw new Error;
+
+  return characters.push(character)
 }
 
 function getCharacter(name) {
-  // Ваш код
+  return characters.find(obj => obj.name===name?obj:0)
 }
 
 function getCharactersByAge(minAge) {
-  // Ваш код
+  if (!minAge || typeof minAge=='string') {throw new Error()}
+
+  return characters.filter(obj => obj.age>=minAge?obj:0)
 }
 
 function updateCharacter(name, newCharacter) {
-  // Ваш код
+  const character = characters.find(obj => obj.name === name);
+  if (!character) {throw new Error() };
+  Object.assign(character, newCharacter);
 }
 
 function removeCharacter(name) {
-  // Ваш код
+  const chIndex = characters.findIndex(obj => obj.name===name )
+  if (chIndex===-1) {throw new Error() };
+  characters.splice(chIndex, 1)
 }
 
 export { characters, addCharacter, updateCharacter, getCharacter, getCharactersByAge, removeCharacter };
