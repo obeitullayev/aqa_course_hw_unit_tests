@@ -9,7 +9,18 @@
 */
 
 function digitalRoot(number) {
-  // Ваш код
+    let str = String(number)
+    let sum=0;
+    for (let i=0; i<str.length; i++){
+      sum+=Number(str[i])
+    }
+
+    if (sum>9)
+      {return digitalRoot(sum)}
+    else
+      {return sum}
+
 }
+
 
 export { digitalRoot };
