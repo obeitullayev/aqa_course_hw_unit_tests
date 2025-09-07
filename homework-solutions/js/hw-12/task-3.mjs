@@ -105,4 +105,5 @@ async function promiseAll() {
     `)}
 }
 
+// вызов функции
 promiseAll()
