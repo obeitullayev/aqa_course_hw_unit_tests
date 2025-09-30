@@ -7,11 +7,11 @@
 //     - Массив строк: переменная cities, значения ["Minsk", "Warsaw", "London"].
 //     - Объект: переменная person, объект с полями name: "Alice", age: 30, city: "Minsk".
 
-let num1: Number = 42;
-let str: String ="Hello, TypeScript!";
-let isComplete: Boolean = true;
-let numbers: Array<Number>=[1, 2, 3, 4, 5];
-let cities: Array<String>=["Minsk", "Warsaw", "London"];
+let num1: number = 42;
+let str: string ="Hello, TypeScript!";
+let isComplete: boolean = true;
+let numbers: Array<number>=[1, 2, 3, 4, 5];
+let cities: Array<string>=["Minsk", "Warsaw", "London"];
 let person ={
     name: "Alice",
     age: 30,

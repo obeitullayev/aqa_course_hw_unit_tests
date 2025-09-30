@@ -10,9 +10,7 @@
 const validatePassword =(pass:string): boolean => {
     const chars = pass.split('');
     return (typeof pass === 'string' &&
-            chars.some(el => el>='A' && el <='Z') &&
-            chars.some(el => el>='a' && el <='z') &&
-            chars.some(el => el>='0' && el <='9') &&
+            /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).*$/.test(pass) &&
             pass.length>=8 &&
             pass.trim().length>0
     )
