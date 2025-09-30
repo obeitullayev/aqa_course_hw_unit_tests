@@ -25,29 +25,9 @@
 const baseUrl='https://jsonplaceholder.typicode.com'
 
 // респонс запроса
-async function getUsers() {
+async function getDataFromApi(url) {
     try {
-        const response=await fetch(baseUrl+'/users') 
-        const body = await response.json()
-        return body
-    } catch (error) {
-        console.error(error.message);
-    }
-}
-
-async function getAlbums() {
-    try {
-        const response=await fetch(baseUrl+'/albums')
-        const body = await response.json()
-        return body
-    } catch (error) {
-        console.error(error.message);
-    }
-}
-
-async function getPhotos() {
-    try {
-        const response=await fetch(baseUrl+'/photos')
+        const response=await fetch(url) 
         const body = await response.json()
         return body
     } catch (error) {
@@ -57,7 +37,7 @@ async function getPhotos() {
 
 
 //создает объект пользователя
-async function createTodo(user, albums, photos ) {
+function createUserObject(user, albums, photos ) {
     try {
         const { name, email, phone, company } = user;
         const result = {
@@ -69,7 +49,7 @@ async function createTodo(user, albums, photos ) {
         let i=1;
         albums.forEach((album) => {
             if (album.userId===user.id){
-                const counter =photos.reduce((acc, photo) => {
+                const counter=photos.reduce((acc, photo) => {
                     if (album.id===photo.albumId){
                         acc++;
                     }
@@ -87,23 +67,26 @@ async function createTodo(user, albums, photos ) {
 }
 
 //перебирает результат респонса
-async function promiseAll() { 
-    const users = await getUsers()
-    const albums = await getAlbums()
-    const photos = await getPhotos()
-    const array = users.map(user=>createTodo(user, albums, photos))
-
-    const result = await Promise.all(array) 
-    for (let i = 0; i < result.length; i++) {
-    console.log(`${i + 1}.  name: ${result[i].name}
-    email: ${result[i].email}
-    phone: ${result[i].phone}
-    company: ${result[i].company}
-    albums:
-      ${result[i].albums.join('\n      ')}
-    __________________________________
-    `)}
+async function publishResult() {
+    const getUsers = await getDataFromApi(baseUrl+'/users')
+    const getAlbums = await getDataFromApi(baseUrl+'/albums')
+    const getPhotos = await getDataFromApi(baseUrl+'/photos')
+    const users= await Promise.all(getUsers)
+    const albums=await Promise.all(getAlbums)
+    const photos=await Promise.all(getPhotos)
+    const result= users.map(user=>createUserObject(user, albums, photos))
+    return result
 }
 
 // вызов функции
-promiseAll()
+const result = await publishResult()
+
+for (let i = 0; i < result.length; i++) {
+    console.log(`${i + 1}.  name: ${result[i].name}
+email: ${result[i].email}
+phone: ${result[i].phone}
+company: ${result[i].company}
+albums:
+${result[i].albums.join('\n      ')}
+__________________________________
+`)}
