@@ -15,9 +15,9 @@ async function createTodo({ userId, title, completed }) {
             userId,
             title,
             completed,},})
-        if (!response.status===201) throw new Error ('Status not 201')
+        if (response.status!==201) throw new Error ('Status not 201')
         const body = await response.json()
-        if (!(body.id===201)) throw new Error ('ID not 201')
+        if (body.id!==201) throw new Error ('ID not 201')
         return response
     } catch (error) {
         console.error(error.message);
