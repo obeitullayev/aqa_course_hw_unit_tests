@@ -10,11 +10,12 @@ const bodyObj={ userId: 1, title: "1", completed: false }
 
 async function createTodo({ userId, title, completed }) {
     try {
-        const response=await fetch('https://jsonplaceholder.typicode.com/todos', {method: "post",
-        body: {
-            userId,
-            title,
-            completed,},})
+        const response=await fetch('https://jsonplaceholder.typicode.com/todos', {method: "post", headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+        userId,
+        title,
+        completed
+                }),})
         if (response.status!==201) throw new Error ('Status not 201')
         const body = await response.json()
         if (body.id!==201) throw new Error ('ID not 201')
